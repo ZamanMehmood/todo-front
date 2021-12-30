@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const AxiosConfig = axios.create({
-  baseURL: 'http://localhost:5000/todo',
+  baseURL: "https://node-todos1-app.herokuapp.com/todo",
 });
 
 export default AxiosConfig;

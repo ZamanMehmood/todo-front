@@ -24,6 +24,7 @@ function AddList() {
   };
   return (
     <div className="container m-5">
+      <h2>Add Todo</h2>
       <form action="container">
         <div class="mb-3">
           <label class="form-label">Enter title</label>

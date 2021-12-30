@@ -6,7 +6,7 @@ function AddList() {
     id: '',
     title: '',
     marked: false,
-    date: '',
+    duedate: '',
   });
   const { id } = useParams();
 
@@ -14,16 +14,16 @@ function AddList() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(value);
-    if (value.title && value.marked && value.date) {
+    if (value.title && value.marked && value.duedate) {
       const poyload = {
         title: value.title,
-        duedate: value.date,
+        duedate: value.duedate,
         marked: value.marked,
       };
       const result = await AxiosConfig.put('/update-todo/' + id, poyload);
       console.log('result ', result.data.success);
       if (result.data.success) {
-        setvalue({ title: '', marked: false, date: '' });
+        setvalue({ title: '', marked: false, duedate: '' });
         alert('data updated successfully');
       }
     } else {
@@ -38,11 +38,17 @@ function AddList() {
     }
   };
 
+  // var curr2 =
+  // curr2.setDate(curr.getDate());
+  // var date2 = curr2.;
+
   useEffect(() => {
     initialCall();
   }, []);
   return (
     <div className="container m-5">
+           <h2>Edit Todo</h2>
+
       <form action="container">
         <div class="mb-3">
           <label class="form-label">Enter title</label>
@@ -75,11 +81,11 @@ function AddList() {
           <label class="form-label">Due Date</label>
           <input
             onChange={(event) => {
-              setvalue({ ...value, date: event.target.value });
+              setvalue({ ...value, duedate: event.target.value });
             }}
-            name="date"
+            name="duedate"
             type="date"
-            value={value.date}
+            value={value.duedate}
             class="form-control"
             placeholder="title"
           />
